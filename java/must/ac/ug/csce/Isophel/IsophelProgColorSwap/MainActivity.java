@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView taptext = new TextView(this);
-        taptext.setText("Tap to Change Colour!");
+        taptext.setText("Tap here to Change Colour!");
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams. MATCH_PARENT ,
