@@ -3,6 +3,7 @@ package must.ac.ug.csce.Isophel.IsophelProgColorSwap;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         Button tapmebtn = new Button(this);
         tapmebtn.setText("Tap Me!");
+
         tapmebtn.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
        int  ButtonWidth = tapmebtn.getMeasuredWidth();
+        Button broadcastbtn = new Button(this);
 
+        broadcastbtn.setText("Send BroadCast");
+        broadcastbtn.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED);
+        ButtonWidth  = broadcastbtn.getMeasuredWidth();
 
         TextView taptext = new TextView(this);
         taptext.setText("Tap here to Change Colour!");
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         linear.setOrientation(LinearLayout.VERTICAL);
         linear.addView(taptext,layoutParams);
         linear.addView(tapmebtn,blayoutParams);
+        linear.addView(broadcastbtn);
         setContentView(linear);
 
         final Random random= new Random();
@@ -57,6 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+        broadcastbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message="Broadcast Message";
+                Intent eve= new Intent();
+                String m = "Its a Broadcast Message";
+                Intent intent = new Intent();
+                intent.setAction("com.must.ac.ug.csce.isophel.isophelxmlcolorswap");
+                intent.putExtra("message",m);
+                intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                sendBroadcast(intent);
+            }
+        });
+
 
 
 
